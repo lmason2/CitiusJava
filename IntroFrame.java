@@ -41,14 +41,14 @@ public class IntroFrame extends JFrame{
         introTitle.setForeground(Color.YELLOW);
         topPanel.add(introTitle);
 
-        JLabel tdFileLabel = new JLabel("Choose the TD file:");
-        tdFileLabel.setForeground(Color.YELLOW);
-        tdFileLabel.setHorizontalAlignment(JLabel.LEFT);
         JLabel personalFileLabel = new JLabel("Choose your personal file:");
         personalFileLabel.setForeground(Color.YELLOW);
-        personalFileLabel.setHorizontalAlignment(JLabel.RIGHT);
-        chooserLabelPanel.add(tdFileLabel);
+        personalFileLabel.setHorizontalAlignment(JLabel.LEFT);
+        JLabel tdFileLabel = new JLabel("Choose the TD file:");
+        tdFileLabel.setForeground(Color.YELLOW);
+        tdFileLabel.setHorizontalAlignment(JLabel.RIGHT);
         chooserLabelPanel.add(personalFileLabel);
+        chooserLabelPanel.add(tdFileLabel);
 
         JFileChooser tdFileChooser = new JFileChooser();
         JFileChooser personalFileChooser = new JFileChooser();

@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 public class CitiusJava {
-    private static ClientList clients = new ClientList();
     private static String quarter;
     private static String tdFile;
     private static String personalFile;
@@ -78,7 +77,7 @@ public class CitiusJava {
             newAccount.feeSchedule();
             newAccount.arrears();
             newAccount.quarterAdjust(quarter);
-            clients.addClient(newAccount);
+            ClientList.addClient(newAccount);
         }
         ClientList.print();
     }

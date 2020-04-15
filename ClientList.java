@@ -12,13 +12,13 @@ public class ClientList {
     public ClientList() {
     }
 
-    public void addClient(Account newAccount) {
+    public static void addClient(Account newAccount) {
         clientList.addElement(newAccount);
     }
 
     public static void print() throws IOException {
         BufferedWriter oFile = new BufferedWriter(new FileWriter("Final.csv"));
-
+        oFile.flush();
         //output headers
         oFile.write("Advisor TD");
         oFile.write("," + "Advisor SA");
@@ -32,9 +32,24 @@ public class ClientList {
         oFile.write(", " + "Fee in Arrears");
         oFile.write(", " + "Total Fee\n");
 
+        int count = 1;
         for (Account account : clientList) {
+            System.out.println(count);
+            count++;
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(2);
+            System.out.println(account.getAdviserTD() + ","
+                    + account.getAdviserSA() + ","
+                    + account.getLastName() + ","
+                    + account.getFirstName() + ","
+                    + account.getAccountNumber() + ","
+                    + account.getRegistration() + ","
+                    + account.getTierVal() + ","
+                    + account.getValue() + ","
+                    + (df.format(account.getFee())) + ","
+                    + account.getArrears() + ","
+                    + (df.format(account.getTotal()))
+                    + "\n");
             oFile.write(account.getAdviserTD() + ","
                             + account.getAdviserSA() + ","
                             + account.getLastName() + ","
@@ -48,5 +63,6 @@ public class ClientList {
                             + (df.format(account.getTotal()))
                             + "\n");
         }
+        oFile.close();
     }
 }
