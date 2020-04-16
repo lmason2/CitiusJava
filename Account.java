@@ -8,8 +8,8 @@ import java.text.DecimalFormat;
  */
 public class Account {
     // Data
-    private String adviserTD;
-    private String adviserSA;
+    private String advisorTD;
+    private String advisorSA;
     private String lastName;
     private String firstName;
     private int accountNumber;
@@ -24,18 +24,18 @@ public class Account {
 
     /**
      * Account contructor that initializes all the information for an account
-     * @param adviserTD
-     * @param adviserSA
-     * @param lastName
-     * @param firstName
-     * @param accountNumber
-     * @param registration
-     * @param tierValue
-     * @param accountValue
+     * @param advisorTD is the TD advisor ID
+     * @param advisorSA is the SA advisor ID
+     * @param lastName is the last name of the client
+     * @param firstName of the client
+     * @param accountNumber of the client
+     * @param registration description of the client
+     * @param tierValue for billing purposes
+     * @param accountValue is the value in the account
      */
-    public Account(String adviserTD, String adviserSA, String lastName, String firstName, int accountNumber, String registration, int tierValue, float accountValue) {
-        this.adviserTD = adviserTD;
-        this.adviserSA = adviserSA;
+    public Account(String advisorTD, String advisorSA, String lastName, String firstName, int accountNumber, String registration, int tierValue, float accountValue) {
+        this.advisorTD = advisorTD;
+        this.advisorSA = advisorSA;
         this.lastName = lastName;
         this.firstName = firstName;
         this.accountNumber = accountNumber;
@@ -2324,8 +2324,8 @@ public class Account {
     public void printAccount(BufferedWriter oFile) throws IOException {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
-        oFile.write(adviserTD + ","
-                + adviserSA + ","
+        oFile.write(advisorTD + ","
+                + advisorSA + ","
                 + lastName + ","
                 + firstName + ","
                 + accountNumber + ","

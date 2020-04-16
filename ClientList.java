@@ -5,13 +5,13 @@ import java.util.Vector;
 
 /**
  * ClientList.java implements a client list object that holds
- *      accounts for a financial adviser.
- * Citius Adviser solutions uses this class to run their billing
+ *      accounts for a financial Advisor.
+ * Citius Advisor solutions uses this class to run their billing
  */
 
 public class ClientList {
     // Data
-    private static Vector<Account> clientList;
+    private static Vector<Account> clientList = new Vector<>();
 
     // Methods
 
@@ -20,7 +20,6 @@ public class ClientList {
      *      holding the accounts
      */
     public ClientList() {
-        clientList = new Vector<>();
     }
 
     /**

@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Driver class for Citius Adviser solutions billing
+ * Driver class for Citius Advisor solutions billing
  */
 public class CitiusJava {
     // Data
@@ -96,7 +96,7 @@ public class CitiusJava {
                     // Match found
                     tierVal = Integer.parseInt(zAccount[7]); // Set tier value
                     registration = zAccount[6]; // Set registration
-                    AdSA = zAccount[0]; // Set adviser SA
+                    AdSA = zAccount[0]; // Set Advisor SA
                 }
             }
 
