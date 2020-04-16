@@ -1,4 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.text.DecimalFormat;
 
+/**
+ * Account is a class to simulate a financial account using TD Ameritrade
+ * Used by Citius Adivser Solutions
+ */
 public class Account {
     // Data
     private String adviserTD;
@@ -15,6 +22,17 @@ public class Account {
 
     // Methods
 
+    /**
+     * Account contructor that initializes all the information for an account
+     * @param adviserTD
+     * @param adviserSA
+     * @param lastName
+     * @param firstName
+     * @param accountNumber
+     * @param registration
+     * @param tierValue
+     * @param accountValue
+     */
     public Account(String adviserTD, String adviserSA, String lastName, String firstName, int accountNumber, String registration, int tierValue, float accountValue) {
         this.adviserTD = adviserTD;
         this.adviserSA = adviserSA;
@@ -26,10 +44,17 @@ public class Account {
         this.value = accountValue;
     }
 
+    /**
+     * Function to adjust the value in the account based on the nonstandard assets
+     */
     public void nonStandardAssets() {
 
     }
 
+    /**
+     * Adjusts the fee based on the quarter that is currently being billed
+     * @param quarter is the string version of the quarter number
+     */
     public void quarterAdjust(String quarter) {
         switch (quarter) {
             case "1":
@@ -43,6 +68,9 @@ public class Account {
         }
     }
 
+    /**
+     * Fee schedule applies the fee based on the tier value attached to the account
+     */
     public void feeSchedule()
     {
         if (tierVal == 1)
@@ -2281,55 +2309,32 @@ public class Account {
         }
     }
 
-    public void arrears() {
+    /**
+     * Calculate arrears calculates the arrears for the account
+     */
+    public void calculateArrears() {
 
     }
 
-    public void printAccount() {
-
-    }
-
-    public String getAdviserTD() {
-        return adviserTD;
-    }
-
-    public String getAdviserSA() {
-        return adviserSA;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public String getRegistration() {
-        return registration;
-    }
-
-    public int getTierVal() {
-        return tierVal;
-    }
-
-    public float getValue() {
-        return value;
-    }
-
-    public double getFee() {
-        return fee;
-    }
-
-    public float getArrears() {
-        return arrears;
-    }
-
-    public double getTotal() {
-        return fee + arrears;
+    /**
+     * Print account that allows the account to print itself based on its data
+     * @param oFile is the file being printed to
+     * @throws IOException for the possibility of a file IO exception
+     */
+    public void printAccount(BufferedWriter oFile) throws IOException {
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        oFile.write(adviserTD + ","
+                + adviserSA + ","
+                + lastName + ","
+                + firstName + ","
+                + accountNumber + ","
+                + registration + ","
+                + tierVal + ","
+                + value + ","
+                + df.format(fee) + ","
+                + arrears + ","
+                + df.format(total)
+                + "\n");
     }
 }

@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * IntroFrame to run the billing process using swing
+ * Used by Citius Adviser Solutions
+ */
+
 public class IntroFrame extends JFrame{
     // Data
     private int quarter;
@@ -50,10 +55,13 @@ public class IntroFrame extends JFrame{
         chooserLabelPanel.add(personalFileLabel);
         chooserLabelPanel.add(tdFileLabel);
 
+        // Two file choosers in frame for Personal and TD files
         JFileChooser tdFileChooser = new JFileChooser();
         JFileChooser personalFileChooser = new JFileChooser();
         secondPanel.add(personalFileChooser);
         secondPanel.add(tdFileChooser);
+
+        // Add listeners
         tdFileChooser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +83,7 @@ public class IntroFrame extends JFrame{
             }
         });
 
+        // Quarter combo boxes
         JLabel quarterLabel = new JLabel("Which quarter is it?:");
         thirdPanel.add(quarterLabel);
         quarterLabel.setForeground(Color.yellow);
@@ -85,8 +94,8 @@ public class IntroFrame extends JFrame{
         quarterComboBox.addItem(4);
         thirdPanel.add(quarterComboBox);
 
-        JButton playButton = new JButton("Bill");
-        bottomPanel.add(playButton);
+        JButton billButton = new JButton("Bill");
+        bottomPanel.add(billButton);
 
         // Add panels to root panel
         panel.add(topPanel);
@@ -98,8 +107,8 @@ public class IntroFrame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
 
-        // Listener for the play button
-        playButton.addActionListener(new ActionListener() {
+        // Listener for the bill button
+        billButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 quarter = (Integer) Objects.requireNonNull(quarterComboBox.getSelectedItem());
@@ -109,18 +118,34 @@ public class IntroFrame extends JFrame{
         });
     }
 
+    /**
+     * Getter for the value of quarter in a combo box
+     * @return the string version of the combo box
+     */
     public String getQuarter() {
         return String.valueOf(quarter);
     }
 
+    /**
+     * Getter for TD File name path
+     * @return the string version of the path of the file
+     */
     public String getTdFileName() {
         return tdFileName;
     }
 
+    /**
+     * Getter for Personal File name path
+     * @return the string version of teh path of the file
+     */
     public String getPersonalFileName() {
         return personalFileName;
     }
 
+    /**
+     * Getter for bill private member variable
+     * @return the status of bill
+     */
     public boolean isBill() {
         return bill;
     }
